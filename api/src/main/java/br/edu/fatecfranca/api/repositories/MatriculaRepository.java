@@ -6,12 +6,9 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import br.edu.fatecfranca.api.models.Matricula;
 
-public interface MatriculaRepository
-       extends MongoRepository<Matricula, String> {
+public interface MatriculaRepository extends MongoRepository<Matricula, String> {
 
+    List<Matricula> findByAlunoId(String alunoId);
 
-   List<Matricula> findByAlunoId(String alunoId);
-
-
-   boolean existsByAlunoId(String alunoId);
+    boolean existsByAlunoId(String alunoId);
 }
