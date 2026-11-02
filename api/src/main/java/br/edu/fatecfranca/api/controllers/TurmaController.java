@@ -3,6 +3,7 @@ package br.edu.fatecfranca.api.controllers;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.edu.fatecfranca.api.dtos.TurmaResponse;
 import br.edu.fatecfranca.api.models.Turma;
 import br.edu.fatecfranca.api.services.TurmaService;
 
@@ -26,15 +28,24 @@ public class TurmaController {
     }
 
     // Listar todas as turmas
+
     @GetMapping
-    public List<Turma> listarTodos() {
-        return service.listarTodos();
+    public List<TurmaResponse> listarTodos() {
+        return service.listarComDetalhes();
+    }
+
+    @GetMapping("/curso/{cursoId}")
+    public List<TurmaResponse> listarPorCurso(
+            @PathVariable String cursoId) {
+        return service.listarPorCursoComDetalhes(cursoId);
     }
 
     // Buscar turma por ID
     @GetMapping("/{id}")
-    public Optional<Turma> buscarPorId(@PathVariable String id) {
-        return service.buscarPorId(id);
+    public ResponseEntity<TurmaResponse> buscarPorId(@PathVariable String id) {
+        return service.buscarComDetalhes(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     // Cadastrar turma

@@ -1,6 +1,7 @@
 package br.edu.fatecfranca.api.models;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 
@@ -8,32 +9,33 @@ public class Turma {
 
     @Id
     private String id;
-    
+
     private String cursoId;
     private String instrutorId;
-    private LocalDate dataInicio;
-    private LocalDate dataFim;
-    private Integer numVagas;
-    private String status;
-    
+    private LocalDate inicio;
+    private LocalDate fim;
+    private Integer vagas;
+    private List<Horario> horarios;
+
     public Turma() {
     }
 
     public Turma(
-        String id,
-        String cursoId,
-        String instrutorId,
-        LocalDate dataInicio,
-        LocalDate dataFim,
-        Integer numVagas,
-        String status) {
-            this.id = id;
-            this.cursoId = cursoId;
-            this.instrutorId = instrutorId;
-            this.dataInicio = dataInicio;
-            this.dataFim = dataFim;
-            this.numVagas = numVagas;
-            this.status = status;
+            String id,
+            String cursoId,
+            String instrutorId,
+            LocalDate inicio,
+            LocalDate fim,
+            Integer vagas,
+            List<Horario> horarios) {
+
+        this.id = id;
+        this.cursoId = cursoId;
+        this.instrutorId = instrutorId;
+        this.inicio = inicio;
+        this.fim = fim;
+        this.vagas = vagas;
+        this.horarios = horarios;
     }
 
     public String getId() {
@@ -60,37 +62,36 @@ public class Turma {
         this.instrutorId = instrutorId;
     }
 
-    public LocalDate getDataInicio() {
-        return dataInicio;
+    public LocalDate getInicio() {
+        return inicio;
     }
 
-    public void setDataInicio(LocalDate dataInicio) {
-        this.dataInicio = dataInicio;
+    public void setInicio(LocalDate inicio) {
+        this.inicio = inicio;
     }
 
-    public LocalDate getDataFim() {
-        return dataFim;
+    public LocalDate getFim() {
+        return fim;
     }
 
-    public void setDataFim(LocalDate dataFim) {
-        this.dataFim = dataFim;
+    public void setFim(LocalDate fim) {
+        this.fim = fim;
     }
 
-    public Integer getNumVagas() {
-        return numVagas;
+    public Integer getVagas() {
+        return vagas;
     }
 
-    public void setNumVagas(Integer numVagas) {
-        this.numVagas = numVagas;
+    public void setVagas(Integer vagas) {
+        this.vagas = vagas;
     }
 
-    public String getStatus() {
-        return status;
+    public List<Horario> getHorarios() {
+        return horarios;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setHorarios(List<Horario> horarios) {
+        this.horarios = horarios;
     }
 
-    
 }
