@@ -4,7 +4,7 @@ import java.time.LocalTime;
 
 public class Horario {
 
-    private Integer diaSemana;
+    private String diaSemana;
     private LocalTime inicio;
     private LocalTime fim;
 
@@ -12,7 +12,7 @@ public class Horario {
     }
 
     public Horario(
-        Integer diaSemana,
+        String diaSemana,
         LocalTime inicio,
         LocalTime fim) {
         this.diaSemana = diaSemana;
@@ -20,11 +20,11 @@ public class Horario {
         this.fim = fim;
     }
 
-    public Integer getDiaSemana() {
+    public String getDiaSemana() {
         return diaSemana;
     }
 
-    public void setDiaSemana(Integer diaSemana) {
+    public void setDiaSemana(String diaSemana) {
         this.diaSemana = diaSemana;
     }
 
